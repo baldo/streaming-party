@@ -1,0 +1,211 @@
+// fork-awesome settings
+$fa-font-path: "./assets/fork-awesome/fonts";
+@import "./assets/fork-awesome/scss/variables";
+
+// color definitions
+$white: #ffffff;
+$dark-grey: #333333;
+
+$magenta: #ff2978;
+$blue: #29a5ff;
+
+// fonts
+$default-font: NovaRound;
+
+// body
+$body-margin: 0;
+$body-padding: 0;
+
+$body-width: 100%;
+$body-height: 100%;
+
+$body-color: $white;
+$body-background-color: $dark-grey;
+
+$body-font-family: $default-font;
+
+// text selection
+$selection-color: $dark-grey;
+$selection-background-color: $magenta;
+
+// page container
+$page-container-margin: 0;
+$page-container-padding: 1em;
+
+$page-container-width: 100%;
+$page-container-height: 100%;
+
+// small container
+$small-container-margin: 0 auto 2em auto;
+
+$small-container-width: 40%;
+
+// welcome container
+$welcome-container-margin: 1em 0;
+
+$welcome-container-font-size: 1.25em;
+
+$welcome-container-h1-font-size: 3em;
+$welcome-container-strong-font-size: 1.5em;
+
+$welcome-container-list-margin: 2em 0;
+$welcome-container-list-font-size: 1.25em;
+
+$welcome-container-list-element-margin: 0.5em 0;
+
+// button
+$button-variants: (
+  "primary": $magenta,
+  "secondary": $blue
+);
+
+$button-background-color: $dark-grey;
+
+$button-margin: 1em;
+$button-padding: 0.3em 0.5em;
+
+$button-font-family: $default-font;
+$button-font-size: 2em;
+
+$button-border-width: 0.15em;
+$button-border-style: solid;
+$button-border-radius: 0.5em;
+
+$button-box-shadow-size: 0.1em;
+
+// checkbox group - fieldset
+$checkbox-group-fieldset-margin: 0 0 0.5em 0;
+$checkbox-group-fieldset-padding: 0;
+
+$checkbox-group-fieldset-width: 100%;
+
+// checkbox group - input
+$checkbox-group-input-margin: -0.25em 0.25em 0 -0.25em;
+
+$checkbox-group-input-size: 1.25em;
+$checkbox-group-input-line-height: 1.25em;
+
+$checkbox-group-input-color: $dark-grey;
+$checkbox-group-input-background-color: $white;
+$checkbox-group-input-invalid-background-color: $magenta;
+
+$checkbox-group-input-border: 0.2em solid $dark-grey;
+$checkbox-group-input-border-radius: 0.5em;
+
+$checkbox-group-input-focus-background-color: $white;
+$checkbox-group-input-focus-box-shadow: 0 0 0 0.1em $white;
+
+// checkbox group - label
+$checkbox-group-label-margin: 0;
+$checkbox-group-label-padding: 0.25em 0.5em;
+
+$checkbox-group-label-width: 100%;
+
+// checkbox group - error
+$checkbox-group-error-margin: 0;
+$checkbox-group-error-padding: 0.25em 0.5em;
+
+$checkbox-group-error-width: 100%;
+
+$checkbox-group-error-color: $magenta;
+
+// input group - fieldset
+$input-group-fieldset-margin: 0 0 0.5em 0;
+$input-group-fieldset-padding: 0;
+
+$input-group-fieldset-width: 100%;
+
+// input group - label
+$input-group-label-margin: 0;
+$input-group-label-padding: 0.25em 0.5em;
+
+$input-group-label-width: 100%;
+
+// input group - input
+$input-group-input-margin: 0;
+$input-group-input-padding: 0.3em 0.5em;
+
+$input-group-input-width: 100%;
+
+$input-group-input-font-family: $default-font;
+$input-group-input-font-size: 1.5em;
+
+$input-group-input-color: $dark-grey;
+$input-group-input-background-color: $white;
+
+$input-group-input-border: 0.15em solid $dark-grey;
+$input-group-input-border-radius: 0.5em;
+
+$input-group-input-invalid-color: $dark-grey;
+$input-group-input-invalid-background-color: $magenta;
+$input-group-input-invalid-border-color: $dark-grey;
+
+$input-group-input-focus-box-shadow: 0 0 0 0.1em white;
+
+// input group - error
+$input-group-error-margin: 0;
+$input-group-error-padding: 0.25em 0.5em;
+
+$input-group-error-width: 100%;
+
+$input-group-error-color: $magenta;
+
+// check embedding preview
+$check-embedding-preview-iframe-aspect-ratio-w: 16;
+$check-embedding-preview-iframe-aspect-ratio-h: 10;
+
+$check-embedding-preview-iframe-border: 0.25em solid $dark-grey;
+$check-embedding-preview-iframe-border-radius: 0.5em;
+$check-embedding-preview-iframe-checking-box-shadow: 0 0 0 0.25em $white;
+$check-embedding-preview-iframe-failed-box-shadow: 0 0 0 0.25em $magenta;
+
+$check-embedding-preview-timer-margin: 1em 0;
+
+$check-embedding-preview-timer-font-size: 1.5em;
+$check-embedding-preview-timer-seconds-font-size: 2em;
+
+$check-embedding-preview-timer-failed-color: $magenta;
+
+$check-embedding-preview-message-margin: 1.5em 0 0.5em 0;
+$check-embedding-preview-message-font-size: 2em;
+
+$check-embedding-preview-actions-font-size: 2em;
+$check-embedding-preview-actions-button-font-size: 1em;
+
+// party link page
+$party-link-page-actions-font-size: 1.5em;
+$party-link-page-actions-button-font-size: 1.5em;
+
+$party-link-page-direct-link-margin: 2em 0;
+$party-link-page-direct-link-font-size: 1.5em;
+
+$party-link-page-direct-link-input-margin: 1em auto;
+$party-link-page-direct-link-input-font-size: 1em;
+
+// join party page
+$join-party-jitsi-z-index: 1;
+$join-party-stream-z-index: $join-party-jitsi-z-index + 1;
+
+// stream iframe
+$stream-iframe-header-padding: 0 0.5em;
+$stream-iframe-header-border-radius: 1em;
+
+$stream-iframe-header-item-margin: 0.25em;
+$stream-iframe-header-item-font-size: 1.25em;
+$stream-iframe-header-item-line-height: $stream-iframe-header-item-font-size;
+$stream-iframe-header-item-color: $white;
+
+$stream-iframe-border: 0.25em solid $dark-grey;
+$stream-iframe-background-color: $dark-grey;
+
+$stream-iframe-aspect-ratio-w: 16;
+$stream-iframe-aspect-ratio-h: 10;
+
+$stream-iframe-active-border-color: $magenta;
+
+$stream-iframe-resize-area-size: 0.75em;
+$stream-iframe-resize-area-overlap: $stream-iframe-resize-area-size / 2;
+
+// error page
+$error-page-actions-margin: 3em 0;
+$error-page-actions-button-font-size: 2em;
