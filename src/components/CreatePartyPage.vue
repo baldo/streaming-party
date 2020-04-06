@@ -33,14 +33,16 @@ import { checkStreamPage } from "@/router";
 export default class CreatePartyPage extends Vue {
   @Prop({ required: false }) party?: Party;
 
-  get editableParty(): Party {
-    return (
-      this.party || {
-        jitsiServerUrl: "https://meet.jit.si",
-        jitsiRoomName: "",
-        streamUrl: ""
-      }
-    );
+  editableParty: Party = {
+    jitsiServerUrl: "https://meet.jit.si",
+    jitsiRoomName: "",
+    streamUrl: ""
+  };
+
+  mounted(): void {
+    if (this.party) {
+      this.editableParty = this.party
+    }
   }
 
   onSubmit(party: Party): void {
