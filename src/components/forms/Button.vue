@@ -39,6 +39,8 @@ button {
   border-style: $button-border-style;
   border-radius: $button-border-radius;
 
+  outline: none;
+
   @each $variant, $variant-color in $button-variants {
     &.#{$variant} {
       color: $variant-color;

@@ -150,6 +150,8 @@ input:checked ~ label::before {
   text-align: center;
   line-height: $checkbox-group-input-line-height;
 
+  font-weight: bold;
+
   color: $checkbox-group-input-color;
 }
 

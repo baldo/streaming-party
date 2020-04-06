@@ -21,15 +21,19 @@ export default class WelcomeContainer extends Vue {}
   font-size: $welcome-container-font-size;
 
   h1 {
-    font-size: $welcome-container-h1-font-size
+    font-size: $welcome-container-h1-font-size;
+    font-weight: normal;
   }
 
   strong {
     font-size: $welcome-container-strong-font-size;
+    font-weight: normal;
   }
 
   ol, ul {
     margin: $welcome-container-list-margin;
+
+    list-style-position: inside;
 
     font-size: $welcome-container-list-font-size;
   }
