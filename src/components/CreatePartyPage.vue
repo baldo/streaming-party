@@ -36,9 +36,9 @@ export default class CreatePartyPage extends Vue {
   get editableParty(): Party {
     return (
       this.party || {
-        jitsiServerUrl: "http://localhost:1234",
-        jitsiRoomName: "test",
-        streamUrl: "https://invidio.us/embed/0Cvzbh70m7M"
+        jitsiServerUrl: "https://meet.jit.si",
+        jitsiRoomName: "",
+        streamUrl: ""
       }
     );
   }
