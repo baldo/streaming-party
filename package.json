@@ -3,6 +3,10 @@
   "version": "0.1.2-SNAPSHOT",
   "author": "baldo <baldo@hamburg.freifunk.net>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baldo/streaming-party"
+  },
 
   "private": true,
   "scripts": {
