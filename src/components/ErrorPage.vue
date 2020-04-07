@@ -23,7 +23,7 @@ import { ButtonVariant, ErrorType } from "@/types";
 import { createPartyPage } from "@/router";
 
 @Component
-export default class JoinPartyPage extends Vue {
+export default class ErrorPage extends Vue {
   $enums = {
     ButtonVariant,
   };
