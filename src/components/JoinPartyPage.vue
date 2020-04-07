@@ -1,9 +1,17 @@
 <template>
-  <sp-page-container :prevent-scrolling="true">
-    <stream-iframe class="stream" :url="party.streamUrl" />
+  <div class="join-party-page">
+    <div class="iframe-container">
+      <stream-iframe class="stream" :url="party.streamUrl" />
 
-    <iframe class="jitsi-iframe" :src="jitsiRoomUrl" allow="microphone; camera;"></iframe>
-  </sp-page-container>
+      <iframe
+        class="jitsi-iframe"
+        :src="jitsiRoomUrl"
+        allow="microphone; camera;"
+      ></iframe>
+    </div>
+
+    <navbar help-target="_blank" />
+  </div>
 </template>
 
 <script lang="ts">
@@ -11,11 +19,13 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import { Party } from "@/types";
 import { jitsiRoomUrl } from "@/utils/url";
 import StreamIframe from "@/components/StreamIframe.vue";
+import Navbar from "@/components/Navbar.vue";
 
 @Component({
   components: {
-    StreamIframe
-  }
+    Navbar,
+    StreamIframe,
+  },
 })
 export default class JoinPartyPage extends Vue {
   @Prop({ required: true }) party!: Party;
@@ -29,24 +39,41 @@ export default class JoinPartyPage extends Vue {
 <style scoped lang="scss">
 @import "../variables";
 
+.join-party-page {
+  display: flex;
+  flex-direction: column;
+
+  margin: $join-party-page-margin;
+  padding: $join-party-page-padding;
+
+  width: $join-party-page-width;
+  height: $join-party-page-height;
+
+  .iframe-container {
+    margin: $join-party-page-iframe-container-margin;
+    padding: $join-party-page-iframe-container-padding;
+
+    width: $join-party-page-iframe-container-width;
+    height: $join-party-page-iframe-container-height;
+
+    overflow: hidden;
+  }
+}
+
 .stream {
-  z-index: $join-party-stream-z-index;
+  z-index: $join-party-page-stream-z-index;
 }
 
 .jitsi-iframe {
-  position: fixed;
+  z-index: $join-party-page-jitsi-z-index;
 
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  margin: $join-party-page-jitsi-margin;
+  padding: $join-party-page-jitsi-padding;
 
-  width: 100%;
-  height: 100%;
+  width: $join-party-page-jitsi-width;
+  height: $join-party-page-jitsi-height;
 
-  z-index: $join-party-jitsi-z-index;
-
-  border: none;
-  background-color: #333333;
+  border: $join-party-page-jitsi-border;
+  background-color: $join-party-page-jitsi-background-color;
 }
 </style>

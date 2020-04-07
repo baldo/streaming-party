@@ -28,12 +28,32 @@ $body-font-family: $default-font;
 $selection-color: $dark-grey;
 $selection-background-color: $magenta;
 
+// navbar
+$navbar-padding: 0.25em 1em;
+$navbar-border: 0.05em solid $white;
+
+$navbar-font-size: 1.25em;
+$navbar-line-height: $navbar-font-size;
+$navbar-color: $white;
+
+$navbar-link-margin: 0 0.5em;
+$navbar-link-padding: 0 0.25em;
+
+$navbar-link-color: $white;
+$navbar-link-hover-color: $magenta;
+$navbar-link-outline-color: $white;
+
+$navbar-link-icon-margin: 0 0.5em 0 0;
+$navbar-link-icon-font-size: 0.75em;
+
 // page container
 $page-container-margin: 0;
 $page-container-padding: 1em;
 
 $page-container-width: 100%;
 $page-container-height: 100%;
+
+$page-container-content-margin: 0 0 4em 0; // Includes offset to prevent overlapping navbar.
 
 // small container
 $small-container-margin: 0 auto 2em auto;
@@ -46,6 +66,7 @@ $welcome-container-margin: 1em 0;
 $welcome-container-font-size: 1.25em;
 
 $welcome-container-h1-font-size: 3em;
+$welcome-container-h2-font-size: 1.75em;
 $welcome-container-strong-font-size: 1.5em;
 
 $welcome-container-list-margin: 2em 0;
@@ -53,10 +74,19 @@ $welcome-container-list-font-size: 1.25em;
 
 $welcome-container-list-element-margin: 0.5em 0;
 
+$welcome-container-dl-font-size: 1.25em;
+
+$welcome-container-dl-field-margin: 0;
+$welcome-container-dl-field-padding: 0.1em 0.25em;
+
+$welcome-container-dl-field-width: 50%;
+
+$welcome-container-paragraph-margin: 0.5em 0;
+
 // button
 $button-variants: (
   "primary": $magenta,
-  "secondary": $blue
+  "secondary": $blue,
 );
 
 $button-background-color: $dark-grey;
@@ -183,8 +213,30 @@ $party-link-page-direct-link-input-margin: 1em auto;
 $party-link-page-direct-link-input-font-size: 1em;
 
 // join party page
-$join-party-jitsi-z-index: 1;
-$join-party-stream-z-index: $join-party-jitsi-z-index + 1;
+$join-party-page-margin: 0;
+$join-party-page-padding: 0;
+
+$join-party-page-width: 100%;
+$join-party-page-height: 100%;
+
+$join-party-page-iframe-container-margin: 0;
+$join-party-page-iframe-container-padding: 0;
+
+$join-party-page-iframe-container-width: 100%;
+$join-party-page-iframe-container-height: 100%;
+
+$join-party-page-jitsi-z-index: 1;
+
+$join-party-page-jitsi-margin: 0;
+$join-party-page-jitsi-padding: 0;
+
+$join-party-page-jitsi-width: 100%;
+$join-party-page-jitsi-height: 100%;
+
+$join-party-page-jitsi-border: none;
+$join-party-page-jitsi-background-color: $dark-grey;
+
+$join-party-page-stream-z-index: $join-party-page-jitsi-z-index + 1;
 
 // stream iframe
 $stream-iframe-header-padding: 0 0.5em;
@@ -205,6 +257,29 @@ $stream-iframe-active-border-color: $magenta;
 
 $stream-iframe-resize-area-size: 0.75em;
 $stream-iframe-resize-area-overlap: $stream-iframe-resize-area-size / 2;
+
+// about page
+$about-page-actions-margin: 1.5em 1em 3em 1em;
+
+// faq page
+$faq-page-paragraph-margin: 0.5em 0 2em 0;
+
+// faq question
+$faq-question-margin:1em 0;
+
+$faq-question-headline-margin: 0;
+$faq-question-headline-color: $white;
+
+$faq-question-headline-icon-margin: 0 0 0 -1.75em;
+$faq-question-headline-icon-font-size: 0.5em;
+
+$faq-question-headline-link-padding: 0 1em 0 1.75em;
+
+$faq-question-headline-link-hover-color: $magenta;
+$faq-question-headline-link-outline-color: $faq-question-headline-color;
+
+$faq-question-answer-margin: 0 0 0 2.75em;
+$faq-question-answer-max-height: 1000px; // For transition.
 
 // error page
 $error-page-actions-margin: 3em 0;

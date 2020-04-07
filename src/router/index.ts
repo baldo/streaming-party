@@ -10,6 +10,8 @@ import CheckStreamPage from "@/components/CheckStreamPage.vue";
 import PartyLinkPage from "@/components/PartyLinkPage.vue";
 import JoinPartyPage from "@/components/JoinPartyPage.vue";
 import ErrorPage from "@/components/ErrorPage.vue";
+import AboutPage from "@/components/AboutPage.vue";
+import FaqPage from "@/components/FaqPage.vue";
 import { ErrorType, Party, PARTY_CONSTRAINTS } from "@/types";
 import { Dictionary, RoutePropsFunction } from "vue-router/types/router";
 import { isValid } from "@/utils/validation";
@@ -79,11 +81,13 @@ function partyToQuery(party: Party): Dictionary<string> {
   };
 }
 
-enum Page {
+export enum Page {
   CREATE_PARTY = "create-party",
   CHECK_STREAM = "check-stream",
   PARTY_LINK = "party-link",
   JOIN_PARTY = "join-party",
+  ABOUT = "about",
+  FAQ = "faq",
   ERROR = "error",
 }
 
@@ -212,6 +216,16 @@ const routes: RouteConfig[] = [
     props: (route: Route): { errorType: ErrorType } => ({
       errorType: errorTypeFromParams(route),
     }),
+  },
+  {
+    path: "/about",
+    name: Page.ABOUT,
+    component: AboutPage,
+  },
+  {
+    path: "/faq",
+    name: Page.FAQ,
+    component: FaqPage,
   },
   {
     path: "*",

@@ -1,18 +1,21 @@
 <template>
-  <div
-    :class="{ 'page-container': true, 'prevent-scrolling': preventScrolling }"
-  >
-    <slot />
+  <div class="page-container">
+    <div class="content">
+      <slot />
+    </div>
+
+    <navbar class="navbar" />
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
+import Navbar from "@/components/Navbar.vue";
 
-@Component
-export default class PageContainer extends Vue {
-  @Prop({ required: false, default: false }) preventScrolling!: boolean;
-}
+@Component({
+  components: { Navbar },
+})
+export default class PageContainer extends Vue {}
 </script>
 
 <style scoped lang="scss">
@@ -27,8 +30,16 @@ export default class PageContainer extends Vue {
   width: $page-container-width;
   height: $page-container-height;
 
-  &.prevent-scrolling {
-    overflow: hidden;
+  .content {
+    margin: $page-container-content-margin;
+  }
+
+  .navbar {
+    position: fixed;
+
+    bottom: 0;
+    left: 0;
+    right: 0;
   }
 }
 </style>
