@@ -47,7 +47,7 @@ export const PARTY_CONSTRAINTS: PartyConstraints = {
   jitsiRoomName: {
     type: InputType.TEXT,
     required: true,
-    pattern: /^[a-zA-Z0-9 ]+$/,
+    pattern: /^[a-zA-Z0-9 _-]+$/,
   },
   streamUrl: {
     type: InputType.URL,

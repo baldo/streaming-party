@@ -11,7 +11,7 @@
     <sp-input-group
       name="jitsi_room"
       label="room name"
-      title="May only contain letters and numbers"
+      title="May only contain letters, numbers, underscore or dash"
       :constraints="constraints.jitsiRoomName"
       v-model="party.jitsiRoomName"
     />
