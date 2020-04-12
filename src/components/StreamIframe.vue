@@ -23,6 +23,9 @@
         <i class="fa fa-music" aria-hidden="true"></i>
         streaming party
       </div>
+      <div class="icon refresh-stream" @click="refreshStream($event)">
+        <i class="fa fa-refresh" aria-hidden="true"></i>
+      </div>
       <div class="icon toggle-collapse" @click="toggleCollapsed($event)">
         <i v-if="collapsed" class="fa fa-window-restore" aria-hidden="true"></i>
         <i v-else class="fa fa-window-minimize" aria-hidden="true"></i>
@@ -41,8 +44,11 @@
         class="stream-iframe-container"
         ref="iframe-container"
       >
+        <i class="spinner fa fa-refresh fa-spin fa-3x fa-fw"></i>
+
         <iframe
           class="stream-iframe"
+          v-if="showIframe"
           :src="url"
           allowfullscreen
           webkitAllowFullScreen
@@ -120,6 +126,8 @@ export default class StreamIframe extends Vue {
   };
   @Prop({ required: true }) url!: string;
 
+  showIframe = true;
+
   x = DRAGGING_MARGIN_X;
   y = DRAGGING_MARGIN_Y;
   width = MIN_WIDTH;
@@ -164,6 +172,12 @@ export default class StreamIframe extends Vue {
 
   get height(): number {
     return this.width / ASPECT_RATIO;
+  }
+
+  refreshStream(event: Event): void {
+    event.preventDefault();
+    this.showIframe = false;
+    this.$nextTick(() => this.showIframe = true);
   }
 
   toggleCollapsed(event: Event): void {
@@ -472,6 +486,17 @@ export default class StreamIframe extends Vue {
   .fade-height-leave-to {
     overflow: hidden !important;
     padding-top: 0 !important;
+  }
+
+  .spinner {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+
+    font-size: 7.5em;
+
+    height: 0;
+    line-height: 0;
   }
 
   .resize-container {
