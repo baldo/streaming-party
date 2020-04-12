@@ -177,7 +177,7 @@ export default class StreamIframe extends Vue {
   refreshStream(event: Event): void {
     event.preventDefault();
     this.showIframe = false;
-    this.$nextTick(() => this.showIframe = true);
+    this.$nextTick(() => (this.showIframe = true));
   }
 
   toggleCollapsed(event: Event): void {
@@ -193,7 +193,10 @@ export default class StreamIframe extends Vue {
   }
 
   startDragging(event: MouseEvent): void {
-    this.startMouseAction(this.dragState, event);
+    const target = event.target;
+    if (target instanceof HTMLElement && !target.classList.contains("icon")) {
+      this.startMouseAction(this.dragState, event);
+    }
   }
 
   stopDragging(event: MouseEvent): void {
@@ -453,6 +456,10 @@ export default class StreamIframe extends Vue {
 
     .icon {
       cursor: pointer;
+
+      .fa {
+        pointer-events: none;
+      }
     }
   }
 
