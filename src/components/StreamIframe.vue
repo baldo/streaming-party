@@ -26,6 +26,9 @@
       <div class="icon refresh-stream" @click="refreshStream($event)">
         <i class="fa fa-refresh" aria-hidden="true"></i>
       </div>
+      <div class="icon open-in-popup" @click="openInPopup($event)">
+        <i class="fa fa-external-link" aria-hidden="true"></i>
+      </div>
       <div class="icon toggle-collapse" @click="toggleCollapsed($event)">
         <i v-if="collapsed" class="fa fa-window-restore" aria-hidden="true"></i>
         <i v-else class="fa fa-window-minimize" aria-hidden="true"></i>
@@ -114,6 +117,8 @@ enum ResizeDirection {
   SOUTH_EAST = "resize-se",
 }
 
+let nextStreamId = 1;
+
 @Component
 export default class StreamIframe extends Vue {
   $enums = {
@@ -127,6 +132,8 @@ export default class StreamIframe extends Vue {
   @Prop({ required: true }) url!: string;
 
   showIframe = true;
+  streamId = "";
+  streamWindow: Window | null = null;
 
   x = DRAGGING_MARGIN_X;
   y = DRAGGING_MARGIN_Y;
@@ -155,6 +162,9 @@ export default class StreamIframe extends Vue {
     this.width = window.innerWidth * 0.33;
 
     window.addEventListener("resize", this.onWindowResize);
+
+    this.streamId = "streaming-iframe-" + nextStreamId;
+    nextStreamId += 1;
   }
 
   beforeDestroy(): void {
@@ -176,12 +186,60 @@ export default class StreamIframe extends Vue {
 
   refreshStream(event: Event): void {
     event.preventDefault();
-    this.showIframe = false;
-    this.$nextTick(() => (this.showIframe = true));
+
+    if (this.streamWindow) {
+      this.streamWindow.location.href = this.url;
+    } else {
+      this.showIframe = false;
+      this.$nextTick(() => (this.showIframe = true));
+    }
+  }
+
+  openInPopup(event: Event): void {
+    event.preventDefault();
+
+    if (this.streamWindow) {
+      this.showIframe = false;
+      this.collapsed = true;
+
+      this.streamWindow.focus();
+
+      return;
+    }
+
+    const win = window.open(
+      this.url,
+      this.streamId,
+      `resizable,innerWidth=${this.width},innherHeight=${this.height}`
+    );
+
+    if (win) {
+      this.showIframe = false;
+      this.collapsed = true;
+
+      win.addEventListener("beforeunload", this.closeStreamWindow);
+      this.streamWindow = win;
+    }
+  }
+
+  closeStreamWindow(): void {
+    if (this.streamWindow) {
+      this.streamWindow.close();
+    }
+
+    this.streamWindow = null;
+    this.showIframe = true;
+    this.collapsed = false;
   }
 
   toggleCollapsed(event: Event): void {
     event.preventDefault();
+
+    if (this.streamWindow) {
+      this.closeStreamWindow();
+      return;
+    }
+
     this.collapsed = !this.collapsed;
     if (this.collapsed) {
       // Check if container height still fits.
