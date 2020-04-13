@@ -62,12 +62,13 @@
         class="stream-iframe-container"
         ref="iframe-container"
       >
-        <i class="spinner fa fa-refresh fa-spin fa-3x fa-fw"></i>
+        <i v-if="loading" class="spinner fa fa-refresh fa-spin fa-3x fa-fw"></i>
 
         <iframe
           class="stream-iframe"
           v-if="showIframe"
           :src="url"
+          @load="onLoad()"
           allowfullscreen
           webkitAllowFullScreen
           mozallowfullscreen
@@ -107,7 +108,7 @@ const DRAGGING_MARGIN_X = 10;
 const DRAGGING_MARGIN_Y = 10;
 
 const ASPECT_RATIO = 16 / 10;
-const MIN_WIDTH = 250;
+const MIN_WIDTH = 300;
 const MIN_HEIGHT = MIN_WIDTH / ASPECT_RATIO;
 
 type Listeners = { [key: string]: EventListener };
@@ -156,6 +157,7 @@ export default class StreamIframe extends Vue {
 
   collapsed = false;
   transitioning = false;
+  loading = true;
 
   dragState: MouseActionState = {
     active: false,
@@ -199,12 +201,17 @@ export default class StreamIframe extends Vue {
     return this.width / ASPECT_RATIO;
   }
 
+  onLoad(): void {
+    this.loading = false;
+  }
+
   refreshStream(event: Event): void {
     event.preventDefault();
 
     if (this.streamWindow) {
       this.streamWindow.location.href = this.url;
     } else {
+      this.loading = true;
       this.showIframe = false;
       this.$nextTick(() => (this.showIframe = true));
     }
@@ -245,6 +252,7 @@ export default class StreamIframe extends Vue {
     this.streamWindow = null;
     this.showIframe = true;
     this.collapsed = false;
+    this.loading = true;
   }
 
   toggleCollapsed(event: Event): void {
@@ -570,10 +578,27 @@ export default class StreamIframe extends Vue {
     transition: all 0.3s ease-in-out;
   }
 
+  .fade-height-enter-active {
+    .spinner {
+      transition: all 0.3s ease-in-out;
+      transition-delay: 0.1s;
+    }
+  }
+
+  .fade-height-leave-active {
+    .spinner {
+      transition: all 0.1s ease-in-out;
+    }
+  }
+
   .fade-height-enter,
   .fade-height-leave-to {
     overflow: hidden !important;
     padding-top: 0 !important;
+
+    .spinner {
+      opacity: 0 !important;
+    }
   }
 
   .spinner {
