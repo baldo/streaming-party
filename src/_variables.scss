@@ -247,6 +247,12 @@ $stream-iframe-header-item-font-size: 1.25em;
 $stream-iframe-header-item-line-height: $stream-iframe-header-item-font-size;
 $stream-iframe-header-item-color: $white;
 
+$stream-iframe-header-icon-padding: 0.1em;
+$stream-iframe-header-icon-margin: $stream-iframe-header-item-margin -
+  $stream-iframe-header-icon-padding;
+$stream-iframe-header-icon-outline-color: $white;
+$stream-iframe-header-icon-hover-cololr: $magenta;
+
 $stream-iframe-border: 0.25em solid $dark-grey;
 $stream-iframe-background-color: $dark-grey;
 
@@ -265,7 +271,7 @@ $about-page-actions-margin: 1.5em 1em 3em 1em;
 $faq-page-paragraph-margin: 0.5em 0 2em 0;
 
 // faq question
-$faq-question-margin:1em 0;
+$faq-question-margin: 1em 0;
 
 $faq-question-headline-margin: 0;
 $faq-question-headline-color: $white;

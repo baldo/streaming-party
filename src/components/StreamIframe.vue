@@ -23,16 +23,31 @@
         <i class="fa fa-music" aria-hidden="true"></i>
         streaming party
       </div>
-      <div class="icon refresh-stream" @click="refreshStream($event)">
+      <a
+        href="javascript:"
+        class="icon refresh-stream"
+        title="reload stream"
+        @click="refreshStream($event)"
+      >
         <i class="fa fa-refresh" aria-hidden="true"></i>
-      </div>
-      <div class="icon open-in-popup" @click="openInPopup($event)">
+      </a>
+      <a
+        href="javascript:"
+        class="icon open-in-popup"
+        title="open stream in popup"
+        @click="openInPopup($event)"
+      >
         <i class="fa fa-external-link" aria-hidden="true"></i>
-      </div>
-      <div class="icon toggle-collapse" @click="toggleCollapsed($event)">
+      </a>
+      <a
+        href="javascript:"
+        class="icon toggle-collapse"
+        :title="collapsed ? 'show stream' : 'hide stream'"
+        @click="toggleCollapsed($event)"
+      >
         <i v-if="collapsed" class="fa fa-window-restore" aria-hidden="true"></i>
         <i v-else class="fa fa-window-minimize" aria-hidden="true"></i>
-      </div>
+      </a>
     </div>
     <transition
       name="fade-height"
@@ -514,6 +529,14 @@ export default class StreamIframe extends Vue {
 
     .icon {
       cursor: pointer;
+      margin: $stream-iframe-header-icon-margin;
+      padding: $stream-iframe-header-icon-padding;
+
+      outline-color: $stream-iframe-header-icon-outline-color;
+
+      &:hover {
+        color: $stream-iframe-header-icon-hover-cololr;
+      }
 
       .fa {
         pointer-events: none;
